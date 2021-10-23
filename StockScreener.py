@@ -10,8 +10,6 @@ stockList = []
 for line in portfolio:
     stockList.append(line.strip())
 
-# create new blank file to write the results of the stock analysis to later
-actions = open("actions.txt", "w")
 
 # initialise two empty lists in which to append the stocks based on the decision made
 buys = []
@@ -57,21 +55,23 @@ for stock in stockList:
 
 
     
-# the following code is used to format and write the results of the analysis to the text file "actions.txt" which was initialised earlier
-actions.write("--- BUYS --- ")
+# the following code is used to format and write the results of the analysis to a text file "actions.txt" 
 
-for i in buys:
-    actions.write("\n   -")
-    actions.write(i)
-    
-for i in range(0,2):
-    actions.write("\n")
+with open("actions.txt") as actions:
+    actions.write("--- BUYS --- ")
 
-actions.write("--- SELLS ---")
+    for i in buys:
+        actions.write("\n   -")
+        actions.write(i)
 
-for i in sells:
-    actions.write("\n   -")
-    actions.write(i)
+    for i in range(0,2):
+        actions.write("\n")
+
+    actions.write("--- SELLS ---")
+
+    for i in sells:
+        actions.write("\n   -")
+        actions.write(i)
 
 
 # this gives the user the opportunity to read the confirmation messages before closing the program
